@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.pos.pos.dao.TestDao">
+
+    <resultMap id="resultMap" type="com.pos.pos.test.domain.Menu">
+        <id property="menu" column="Menu"></id>
+    </resultMap>
+
+    <select id="getMenu" resultMap="resultMap">
+        SELECT MENU FROM MENU WHERE PRICE = 2000
+    </select>
+
+
+
+</mapper>
