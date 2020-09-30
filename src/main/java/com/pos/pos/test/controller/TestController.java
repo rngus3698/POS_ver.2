@@ -17,6 +17,7 @@ public class TestController {
     public String test(Model model) throws Exception{
         Menu data = testService.getMenu();
         model.addAttribute("data", data.getMenu());
+
         return "test";
     }
 
