@@ -19,5 +19,9 @@ public class TestController {
         model.addAttribute("data", data.getMenu());
         return "test";
     }
+    @GetMapping("/calendar")
+    public String calendar(){
+        return "calendar";
+    }
 
 }
