@@ -20,5 +20,9 @@ public class TestController {
 
         return "test";
     }
+    @GetMapping("/calendar")
+    public String calendar(){
+        return "calendar";
+    }
 
 }
