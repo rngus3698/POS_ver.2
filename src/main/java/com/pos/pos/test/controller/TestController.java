@@ -24,6 +24,13 @@ public class TestController {
         return "calendar";
     }
 
+    @GetMapping("/header")
+    public String header(){
+        return "common/header";
+    }
 
-
+    @GetMapping("/payment")
+    public String payment(){
+        return "payment";
+    }
 }
