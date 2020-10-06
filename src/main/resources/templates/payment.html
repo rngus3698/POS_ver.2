@@ -4,44 +4,116 @@
     <title>Jeonju-Pos</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <style>
-        .payment_container{position:fixed; top:50px; width:100%;}
-        .payment_container .area_oderList{position:fixed; left:0; width:40%; height: 50%; overflow-y: scroll;}
-        .payment_container .area_keypad{position:fixed; left:0; top:56.3%; width:40%; height: 50%; border:1px solid black;}
-        .payment_container .area_payInfo{position:fixed; left:40%; right:0; width:60%; height:100%; border:1px solid black;}
+        .payment_container{position:fixed; top:100px; width:100%; height:100%;}
+        .payment_container .area_oderList{position:fixed; left:5px; width:40.7%; height: 45%; overflow-y: scroll; border:1px solid black; border-radius:10px; }
+        .payment_container .area_priceInfo{position:fixed; left:5px; top:59.8%; bottom:5px; width:20%; border:1px solid black; border-radius:10px;}
+        .payment_container .area_keypad{position:fixed; left:21%; top:59.8%; bottom:5px; width:20%; border:1px solid black; border-radius:10px;}
+        .payment_container .area_payInfo{position:fixed; left:42%; right:5px; top:100px; bottom:5px; width:57.5%; border:1px solid black; border-radius:10px;}
 
-        .table_orderList{width:100%; height: 100%; border:1px solid black;}
-        .table_orderList .th{height:30px;}
+        .table_orderList{width:100%; border-collapse:collapse;}
+        .table_orderList tr{border-bottom:1px solid black;}
+        .table_orderList .th{height:25px; background-color:rgb(30,32,23); color:rgb(230,160,112);}
+        .table_orderList .td td{text-align:center; padding:5px;}
+        .table_orderList .td .num{width:10%;}
+        .table_orderList .td .element{width:28%}
 
-        .keypad{width:80%; height:100%;}
-        .key{display:inline-block; width:30%; height:20%; border:1px solid black; margin:5px;}
-</style>
+        .area_priceInfo .priceInfo{margin:auto; width:75%; height:20%;}
+        .area_priceInfo .first{margin-top: 17%;}
+        .area_priceInfo .receive{width:90px; font-size:20px; text-align:right; border:0;}
+        .area_priceInfo .priceInfo .item_var{margin-left:15px;}
+        .area_priceInfo .priceInfo .item_name{width:10%; margin-right: 20%;}
+        .area_priceInfo .priceInfo .item{font-size:20px;}
+
+        .area_keypad>div{float:left;}
+        .keypad{width:76%; height:100%;}
+        .key{float:left; width:27%; height:21.2%; border:1px solid lightgray; margin:2%; border-radius:10px; box-shadow: 0px 2px 6px rgba(0,0,0,0.4);}
+        .key p{text-align:center; vertical-align:middle; margin-top:40%;}
+
+        .option{width:20%; height:100%;}
+        .option>div{width: 100%; height:47%; margin:5%; border:1px solid lightgray; box-shadow: 0px 2px 6px rgba(0,0,0,0.4); border-radius:10px;}
+        .option>div::before{content:''; clear:both;}
+        .option>div>p{margin-top:120%; height: 100%; text-align:center;}
+    </style>
+    <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 </head>
 <body>
     <head th:include="/common/header"></head>
+    <head th:include="/common/sidebar"></head>
 
     <section class="payment_container">
         <article class="area_oderList">
             <table class="table_orderList">
                 <tr class="th">
-                    <th>test</th><th>test</th>
+                    <th>*</th><th>메뉴명</th><th>수량</th><th>가격</th>
                 </tr>
                 <tr class="td">
-                    <td>test</td><td>test</td>
+                    <td class="num">1</td><td class="element">칼국수</td><td class="element">1</td><td class="element">6,000</td>
                 </tr>
+                <tr class="td">
+                    <td class="num">1</td><td class="element">칼국수</td><td class="element">1</td><td class="element">6,000</td>
+                </tr>
+                <tr class="td">
+                    <td class="num">1</td><td class="element">칼국수</td><td class="element">1</td><td class="element">6,000</td>
+                </tr>
+                <tr class="td">
+                    <td class="num">1</td><td class="element">칼국수</td><td class="element">1</td><td class="element">6,000</td>
+                </tr>
+                <tr class="td">
+                    <td class="num">1</td><td class="element">칼국수</td><td class="element">1</td><td class="element">6,000</td>
+                </tr>
+                <tr class="td">
+                    <td class="num">1</td><td class="element">칼국수</td><td class="element">1</td><td class="element">6,000</td>
+                </tr>
+
             </table>
+        </article>
+        <article class="area_priceInfo">
+            <div class="priceInfo first">
+                <a class="item_name item">총 금 액&nbsp;</a>
+                <a class="item_var item">800,000</a>
+            </div>
+            <div class="priceInfo">
+                <a class="item_name item">받을금액</a>
+                <a class="item_var item">800,000</a>
+            </div>
+            <div class="priceInfo">
+                <a class="item_name item">받은금액</a>
+                <input type="text" class="receive" value="0">
+            </div>
+            <div class="priceInfo">
+                <a class="item_name item">거스름돈</a>
+                <a class="item_var item">0</a>
+            </div>
         </article>
         <article class="area_keypad">
             <div class="keypad">
-                <th:block th:each="i: ${#numbers.sequence(1, 12)}">
-                    <div class="key">
-                        <p th:text="${i}"></p>
-                    </div>
-                </th:block>
+                <div class="key number"><p>7</p></div><div class="key number"><p>8</p></div><div class="key number"><p>9</p></div>
+                <div class="key number"><p>4</p></div><div class="key number"><p>5</p></div><div class="key number"><p>6</p></div>
+                <div class="key number"><p>1</p></div><div class="key number"><p>2</p></div><div class="key number"><p>3</p></div>
+                <div class="key number"><p>00</p></div><div class="key number"><p>0</p></div><div class="key del"><p><-</p></div>
+            </div>
+            <div class="option">
+                <div class="clear"><p>확인</p></div>
+                <div class="cancel"><p>취소</p></div>
             </div>
         </article>
         <article class="area_payInfo">
-            area_payInfo
+            menu/area_payInfo
         </article>
     </section>
 </body>
+
+<script>
+    $(function(){
+        $number = "";
+        $(".number").click(function(){
+            $number += $(this).children("p").html();
+            $(".receive").val($number);
+        })
+        $(".del").click(function(){
+            $number = $number.substr(0,$number.length-1);
+            $(".receive").val($number);
+        })
+    })
+</script>
 </html>

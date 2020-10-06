@@ -33,4 +33,10 @@ public class TestController {
     public String payment(){
         return "payment";
     }
+
+    @GetMapping("/sidebar")
+    public String sidebar(){
+        return "common/sidebar";
+    }
+
 }
